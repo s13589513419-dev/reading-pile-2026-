@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>书山 · 2026 阅读记录</title>
+<style>
+:root{--ink:#292b2a;--muted:#858984;--line:#e8e9e5;--paper:#fbfbf8;--green:#657c69;--green2:#eaf0e9;--sand:#f2eee6}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+button,input{font:inherit}button{cursor:pointer}.wrap{max-width:1120px;margin:auto;padding:42px 28px 70px}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:38px}.brand{font-family:Georgia,serif;font-size:25px;letter-spacing:.02em}.year{font-size:12px;color:var(--muted);letter-spacing:.16em}
+.intro{margin-bottom:28px}.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--green);text-transform:uppercase}.intro h1{font-family:Georgia,"Songti SC",serif;font-weight:400;font-size:clamp(32px,5vw,48px);margin:10px 0 8px}.intro p{color:var(--muted);font-size:14px;margin:0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:14px;background:#fff;margin:28px 0 32px;overflow:hidden}.stat{padding:18px 22px;border-right:1px solid var(--line)}.stat:last-child{border:0}.stat strong{display:block;font-family:Georgia,serif;font-size:30px;font-weight:400}.stat span{font-size:12px;color:var(--muted)}
+.main{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(290px,.8fr);gap:22px;align-items:start}.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}.panel h2{font-family:Georgia,"Songti SC",serif;font-weight:400;font-size:22px;margin:0 0 6px}.sub{font-size:12px;color:var(--muted);margin:0 0 18px}
+.searchrow{display:flex;gap:8px}.searchrow input{flex:1;min-width:0;border:1px solid var(--line);border-radius:9px;padding:12px 13px;outline:none}.searchrow input:focus{border-color:#9aab9c;box-shadow:0 0 0 3px #eaf0e9}.primary{background:var(--green);color:white;border:0;border-radius:9px;padding:0 18px}.primary:hover{background:#536b58}.hint{font-size:11px;color:var(--muted);margin-top:9px;line-height:1.6}.results{display:grid;gap:8px;margin-top:15px}.result{display:flex;gap:12px;padding:10px;border:1px solid var(--line);border-radius:10px;align-items:center}.result img{width:42px;height:58px;object-fit:cover;background:var(--sand);border-radius:3px}.result .meta{flex:1;min-width:0}.result b{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.result small{display:block;color:var(--muted);font-size:11px;margin-top:4px}.add{border:1px solid #dce4dc;background:#f5f8f4;color:#506954;border-radius:7px;padding:7px 10px;font-size:12px}
+.stackbox{margin-top:20px;background:#f7f7f3;border-radius:12px;min-height:240px;padding:22px 16px 18px;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;position:relative}.stack{width:min(100%,500px);display:flex;flex-direction:column-reverse;align-items:stretch;gap:2px;max-height:390px;overflow:visible}.book{height:var(--h);min-height:9px;max-height:54px;position:relative;border-radius:2px 5px 5px 2px;box-shadow:1px 2px 3px #00000016;display:flex;align-items:center;overflow:hidden;color:white;padding:0 12px;font-size:11px;letter-spacing:.02em}.book:before{content:"";position:absolute;left:5px;top:0;bottom:0;width:2px;background:#ffffff55}.book span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 2px #0005}.empty{color:#a0a49e;font-family:Georgia,serif;font-style:italic;font-size:15px;text-align:center;margin:auto}
+.stackfoot{display:flex;justify-content:space-between;margin-top:10px;color:var(--muted);font-size:11px}.booklist{margin-top:18px;display:grid;gap:8px}.bookitem{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #f0f0ed}.bookitem img{width:30px;height:42px;object-fit:cover;background:var(--sand)}.bookitem .info{flex:1;min-width:0}.bookitem b{font-size:12px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.bookitem small{font-size:10px;color:var(--muted)}.remove{border:0;background:none;color:#a0a49e;font-size:18px;padding:4px 8px}.rightcol{display:grid;gap:18px}.progress{height:6px;background:#edf0eb;border-radius:9px;overflow:hidden;margin:14px 0 8px}.progress div{height:100%;background:var(--green);width:0;transition:width .3s}.animalgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:15px}.animal{border:1px solid var(--line);border-radius:11px;padding:13px 10px;text-align:center;min-height:112px}.animal .emoji{font-size:29px;filter:grayscale(1);opacity:.35}.animal.unlocked .emoji{filter:none;opacity:1}.animal b{display:block;font-size:12px;margin:5px 0 3px}.animal small{font-size:10px;color:var(--muted)}.animal.unlocked{background:#fbfcfa;border-color:#dce6dc}.animal.unlocked small{color:var(--green)}
+.note{font-size:11px;line-height:1.7;color:var(--muted);margin-top:14px}.reset{border:0;background:none;color:#9a9e98;text-decoration:underline;font-size:11px;padding:0;margin-top:16px}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#303531;color:white;padding:10px 16px;border-radius:9px;font-size:12px;opacity:0;pointer-events:none;transition:opacity .2s}.toast.show{opacity:1}
+@media(max-width:760px){.wrap{padding:25px 16px 50px}.main{grid-template-columns:1fr}.stats .stat{padding:14px 12px}.stat strong{font-size:25px}.panel{padding:18px}.stackbox{min-height:190px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div class="brand">the reading pile</div><div class="year">YOUR 2026 · READING LOG</div></header>
+<section class="intro"><div class="eyebrow">A YEAR IN BOOKS</div><h1>把读过的书，堆成一座山。</h1><p>每一本书都留下了厚度。读得越多，遇见的朋友也越多。</p></section>
+<section class="stats">
+ <div class="stat"><strong id="count">0</strong><span>本书籍</span></div>
+ <div class="stat"><strong id="height">0 cm</strong><span>累计书本厚度</span></div>
+ <div class="stat"><strong id="animalCount">0 / 6</strong><span>已解锁动物</span></div>
+</section>
+<div class="main">
+ <section class="panel">
+  <h2>添加一本书</h2><p class="sub">搜索书名，选择你实际读过的版本。</p>
+  <div class="searchrow"><input id="query" placeholder="输入书名或作者…" autocomplete="off"><button class="primary" id="searchBtn">搜索</button></div>
+  <div class="hint">优先匹配书籍版本及出版信息。若没有查到实体厚度，将根据页数估算，你也可以稍后手动调整。</div>
+  <div class="results" id="results"></div>
+  <div style="display:flex;justify-content:space-between;align-items:end;margin-top:28px"><div><h2>我的书堆</h2><p class="sub" style="margin:5px 0 0">按书籍厚度累积 · 由下往上堆叠</p></div><span style="font-size:11px;color:#8b918a" id="stackLabel">2026</span></div>
+  <div class="stackbox"><div class="stack" id="stack"><div class="empty">你的第一本书，正在等待加入。</div></div></div>
+  <div class="stackfoot"><span>地面</span><span id="stackHeight">总高度 0 cm</span></div>
+  <div class="booklist" id="booklist"></div>
+ </section>
+ <aside class="rightcol">
+  <section class="panel">
+   <h2>阅读旅程</h2><p class="sub">每达到一个高度，就会遇见一位新朋友。</p>
+   <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:12px;color:var(--muted)">下一只动物</span><b id="nextAnimal" style="font-size:13px">小仓鼠 · 10 cm</b></div>
+   <div class="progress"><div id="progress"></div></div><div style="font-size:11px;color:var(--muted)" id="progressText">还差 10 cm</div>
+   <div class="animalgrid" id="animals"></div>
+   <p class="note">动物解锁仅取决于书本累计厚度，不受阅读顺序影响。每个高度门槛都是一枚小小的阅读里程碑。</p>
+  </section>
+  <section class="panel">
+   <h2>关于厚度</h2><p class="sub">让书堆尽可能接近现实。</p>
+   <p class="note" style="margin:0">数据来自 Google Books 的书籍目录。部分版本会提供实体尺寸；当厚度缺失时，暂按每页约 0.055 mm 估算（约 300 页 = 1.65 cm）。不同纸张、开本和装订方式会造成误差。</p>
+   <button class="reset" id="reset">清空今年的阅读记录</button>
+  </section>
+ </aside>
+</div>
+</div><div class="toast" id="toast"></div>
+<script>
+const animals=[{name:"小仓鼠",emoji:"🐹",cm:10},{name:"小兔子",emoji:"🐰",cm:25},{name:"小刺猬",emoji:"🦔",cm:45},{name:"小狐狸",emoji:"🦊",cm:70},{name:"小鹿",emoji:"🦌",cm:100},{name:"小熊",emoji:"🐻",cm:150}];
+const colors=["#718b83","#a77b65","#71809a","#b18d58","#8b7898","#718c9c","#a36f70","#8a9270","#9b8068"];
+let books=JSON.parse(localStorage.getItem("readingPile2026")||"[]");
+const $=id=>document.getElementById(id);
+function toast(s){$("toast").textContent=s;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),2300)}
+function total(){return books.reduce((s,b)=>s+b.thickness,0)}
+function cm(v){return (v/10).toFixed(1)}
+function save(){localStorage.setItem("readingPile2026",JSON.stringify(books));render()}
+function render(){
+ const h=total(),unlocked=animals.filter(a=>h>=a.cm*10).length;
+ $("count").textContent=books.length;$("height").textContent=cm(h)+" cm";$("animalCount").textContent=unlocked+" / "+animals.length;$("stackHeight").textContent="总高度 "+cm(h)+" cm";
+ $("stack").innerHTML=books.length?books.map((b,i)=>`<div class="book" title="${esc(b.title)} · ${cm(b.thickness)} cm" style="--h:${Math.max(9,Math.min(54,b.thickness/10*12))}px;background:${b.color||colors[i%colors.length]}"><span>${esc(b.title)}</span></div>`).join(""):'<div class="empty">你的第一本书，正在等待加入。</div>';
+ $("booklist").innerHTML=books.map((b,i)=>`<div class="bookitem"><img src="${b.thumb||''}" onerror="this.style.visibility='hidden'"><div class="info"><b>${esc(b.title)}</b><small>${b.pages?b.pages+' 页 · ':''}${cm(b.thickness)} cm${b.estimated?' · 估算':''}</small></div><button class="remove" title="移除" onclick="removeBook(${i})">×</button></div>`).join("");
+ $("animals").innerHTML=animals.map(a=>{let ok=h>=a.cm*10;return `<div class="animal ${ok?'unlocked':''}"><div class="emoji">${a.emoji}</div><b>${a.name}</b><small>${ok?'已解锁':a.cm+' cm 解锁'}</small></div>`}).join("");
+ let next=animals.find(a=>h<a.cm*10);if(next){let prev=animals[animals.indexOf(next)-1];let start=prev?prev.cm*10:0;let pct=Math.max(0,Math.min(100,(h-start)/(next.cm*10-start)*100));$("nextAnimal").textContent=next.name+" · "+next.cm+" cm";$("progress").style.width=pct+"%";$("progressText").textContent="还差 "+cm(next.cm*10-h)+" cm，遇见"+next.name}else{$("nextAnimal").textContent="全部动物已解锁";$("progress").style.width="100%";$("progressText").textContent="恭喜，阅读动物园已集齐！"}
+}
+function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function removeBook(i){books.splice(i,1);save()}
+function addBook(b){if(books.some(x=>x.key===b.key)){toast("这本书已经在书堆里啦");return}books.push({...b,color:colors[books.length%colors.length]});save();$("results").innerHTML="";$("query").value="";toast("已加入书堆")}
+async function search(){
+ const q=$("query").value.trim();if(!q)return toast("先输入书名或作者吧");
+ $("searchBtn").disabled=true;$("searchBtn").textContent="搜索中…";$("results").innerHTML='<div class="hint">正在连接书籍目录…</div>';
+ try{
+  let records=[],source="";
+  // Try Google Books first; public volume search normally does not require OAuth.
+  try{
+   const url="https://www.googleapis.com/books/v1/volumes?q="+encodeURIComponent(q)+"&maxResults=10&printType=books";
+   const r=await fetch(url,{method:"GET",mode:"cors",headers:{"Accept":"application/json"}});
+   if(!r.ok)throw new Error("Google Books HTTP "+r.status);
+   const data=await r.json();
+   records=(data.items||[]).map(item=>{const v=item.volumeInfo||{},d=v.dimensions||{},pages=v.pageCount||0;let t=d.thickness?parseDimension(d.thickness):0;return {key:"g:"+item.id,title:v.title||"未命名书籍",authors:v.authors||[],pages,thickness:t||(pages?pages*.055:12),estimated:!t,thumb:(v.imageLinks?.thumbnail||"").replace("http:","https:"),isbn:(v.industryIdentifiers||[])[0]?.identifier||"",publisher:v.publisher||"",year:v.publishedDate||"",source:"Google Books"}});
+   if(records.length)source="Google Books";
+  }catch(googleError){console.warn("Google Books search failed; trying Open Library",googleError)}
+  // Fallback: Open Library's public Search API.
+  if(!records.length){
+   const fields="key,title,author_name,first_publish_year,number_of_pages_median,cover_i,isbn,publisher,edition_key";
+   const url="https://openlibrary.org/search.json?q="+encodeURIComponent(q)+"&fields="+encodeURIComponent(fields)+"&limit=10";
+   const r=await fetch(url,{method:"GET",mode:"cors",headers:{"Accept":"application/json"}});
+   if(!r.ok)throw new Error("Google Books unavailable; Open Library HTTP "+r.status);
+   const data=await r.json();
+   records=(data.docs||[]).map((d,i)=>{const pages=d.number_of_pages_median||0;return {key:"ol:"+(d.edition_key?.[0]||d.key||i),title:d.title||"未命名书籍",authors:d.author_name||[],pages,thickness:pages?pages*.055:12,estimated:true,thumb:d.cover_i?"https://covers.openlibrary.org/b/id/"+d.cover_i+"-M.jpg":"",isbn:d.isbn?.[0]||"",publisher:d.publisher?.[0]||"",year:d.first_publish_year||"",source:"Open Library"}});
+   source="Open Library";
+  }
+  if(!records.length){$("results").innerHTML='<div class="hint">两个书籍目录都没有找到结果。试试原文书名、作者名，或缩短关键词。</div>';return}
+  $("results").innerHTML='<div class="hint">搜索来源：'+source+' · 选择与你读过的版本最接近的一项</div>'+records.map((b,i)=>`<div class="result"><img src="${b.thumb||''}" onerror="this.style.visibility='hidden'"><div class="meta"><b>${esc(b.title)}</b><small>${esc(b.authors.join(", ")||"作者未知")} · ${b.pages?b.pages+"页":"页数未知"} · ${b.estimated?"约":"目录尺寸"} ${cm(b.thickness)} cm${b.year?" · "+esc(String(b.year)):""}</small></div><button class="add" data-index="${i}">添加</button></div>`).join("");
+  [...$("results").querySelectorAll("button[data-index]")].forEach(btn=>btn.addEventListener("click",()=>{const b=records[Number(btn.dataset.index)];addBook(b)}));
+ }catch(e){console.error("Book search failed",e);$("results").innerHTML='<div class="hint">暂时无法连接书籍数据库。请确认浏览器可以访问 Google Books 和 Open Library，关闭可能拦截请求的广告/隐私扩展后重试。错误信息：'+esc(e.message||"网络请求失败")+'</div>';toast("书籍搜索暂时失败")}
+ finally{$("searchBtn").disabled=false;$("searchBtn").textContent="搜索"}
+}
+function parseDimension(s){let n=parseFloat(String(s).replace(/[^\d.]/g,""));if(!n)return 0;return /cm/i.test(s)?n*10:/mm/i.test(s)?n:/in/i.test(s)?n*25.4:n}
+$("searchBtn").addEventListener("click",search);$("query").addEventListener("keydown",e=>{if(e.key==="Enter")search()});
+$("reset").addEventListener("click",()=>{if(confirm("确定清空所有阅读记录吗？此操作无法撤销。")){books=[];save();toast("记录已清空")}});
+render();
+</script>
+</body></html>
